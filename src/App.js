@@ -1,10 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
+import UserInput from './UserInput/UserInput';
+import UserOutput from './UserOutput/UserOutput';
+
+class App extends Component {
+
+state = {
+  username : "Bhaskar Singh"
+}
+
+usernameChangedHandler = (event) => {
+  this.setState({
+    username: event.target.value
+  });
+}
+
+  render(){
   return (
-    <div class="App">
+    <div className="App">
       <h1>Assignment</h1>
       <ol>
       <li>Create TWO new components: UserInput and UserOutput</li>
@@ -18,8 +32,14 @@ function App() {
       <li>Add two-way-binding to your input (in UserInput) to also display the starting username</li>
       <li>Add styling of your choice to your components/ elements in the components - both with inline styles and stylesheets</li>
       </ol>
+      <hr />
+      <h2>Working Assignment</h2>
+      <UserInput changed = {this.usernameChangedHandler} currentName = {this.state.username}/>
+      <UserOutput userName={this.state.username}/>
+      <UserOutput userName={this.state.username}/>
+      <UserOutput userName={this.state.username}/>
     </div>
   );
 }
-
+}
 export default App;
